@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yardage Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 500px; /* Adjust the width as needed */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .slider-container {
+            margin-bottom: 15px;
+        }
+
+        .slider-label {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .slider-value {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .slider {
+            width: 100%;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Yardage Predictor <br> (use 10 game average)</h1>
+        <form id="input-form">
+            <div class="slider-container">
+                <label class="slider-label" for="rave_yards">Yards:</label>
+                <output class="slider-value" id="rave_yards_value">0</output>
+                <input class="slider" type="range" id="rave_yards" name="rave_yards" min="0" max="120" value="60" step=".1">
+            </div>
+
+            <div class="slider-container">
+                <label class="slider-label" for="rave_targets">Targets:</label>
+                <output class="slider-value" id="rave_targets_value">0</output>
+                <input class="slider" type="range" id="rave_targets" name="rave_targets" min="0" max="12" value="6" step=".1">
+            </div>
+
+            <div class="slider-container">
+                <label class="slider-label" for="rave_deep_targets">Deep targets (20+ air yards):</label>
+                <output class="slider-value" id="rave_deep_targets_value">0</output>
+                <input class="slider" type="range" id="rave_deep_targets" name="rave_deep_targets" min="0" max="3" value="1.5" step=".1">
+            </div>
+
+            <div class="slider-container">
+                <label class="slider-label" for="rave_first_downs">First downs:</label>
+                <output class="slider-value" id="rave_first_downs_value">0</output>
+                <input class="slider" type="range" id="rave_first_downs" name="rave_first_downs" min="0" max="6" value="3" step=".1">
+            </div>
+
+	    <div class="slider-container">
+                <label class="slider-label" for="rave_offense_pct">Snap %:</label>
+                <output class="slider-value" id="rave_offense_pct_value">0</output>
+                <input class="slider" type="range" id="rave_offense_pct" name="rave_offense_pct" min="0" max="1" value="0.5" step=".01">
+            </div>
+
+            <div class="slider-container">
+                <label class="slider-label" for="favored_by">Favored by:</label>
+                <output class="slider-value" id="favored_by_value">0</output>
+                <input class="slider" type="range" id="favored_by" name="favored_by" min="-14" max="14" value="0" step=".5">
+            </div>
+
+            <div class="slider-container">
+                <label class="slider-label" for="total_line">Total line O/U:</label>
+                <output class="slider-value" id="total_line_value">0</output>
+                <input class="slider" type="range" id="total_line" name="total_line" min="30" max="60" value="45" step=".5">
+            </div>
+            <button type="submit">Calculate</button>
+        </form>
+        <div id="output"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
